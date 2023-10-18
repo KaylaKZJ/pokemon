@@ -19,6 +19,7 @@ export interface IPokemon {
   stats: IStat[];
   types: IType[];
   weight: number;
+  favourite?: boolean;
 }
 
 export interface INameUrl {

@@ -1,18 +1,33 @@
 import { store } from 'common/store';
+import PrefetchPokemon from 'components/prefetchPokemon/prefetchPokemon';
+import MainLayout from 'layouts/main/main';
+import Home from 'pages';
+import Favourite from 'pages/favourites';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import App from './App';
+import { Route, Routes } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PrefetchPokemon>
+        <Router>
+          <MainLayout>
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/favourites' element={<Favourite />}></Route>
+            </Routes>
+          </MainLayout>
+        </Router>
+      </PrefetchPokemon>
     </Provider>
   </React.StrictMode>
 );
